@@ -7,7 +7,7 @@
 
 Hi! I've deployed a version of my solution to Vercel.
 
-### Please, check the results here: https://feq4-447hjed8j-ascpenteado.vercel.app/
+### Please, check the results here: https://feq4.vercel.app/
 
 ---
 
