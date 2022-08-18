@@ -75,6 +75,34 @@
   max-width: 100%;
 }
 
+#see_more {
+  display: block;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+
+  margin: 2rem auto 1rem;
+  font-size: 1.2rem;
+  background-color: #22272b;
+  color: white;
+  border: none;
+  padding: 0.4em 1em;
+  border-radius: 0.3125rem;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+}
+
+#see_more:hover {
+  background-color: white;
+  color: #22272b;
+}
+
+#see_more:disabled {
+  background-color: #22272b;
+  color: white;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* Media Queries */
 
 @media screen and (min-width: 481px) {
