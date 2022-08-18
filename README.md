@@ -1,5 +1,19 @@
 # [Q4 Inc.](https://q4inc.com/)
 
+<br/>
+<br/>
+
+---
+
+Hi! I've deployed a version of my solution to Vercel.
+
+### Please, check the results here: https://feq4-447hjed8j-ascpenteado.vercel.app/
+
+---
+
+<br/>
+<br/>
+
 ## Front-end Developer Assessment
 
 Welcome to the front-end developer assessment package.
@@ -21,8 +35,7 @@ Below, you will find list criteria used to determine your development skill leve
 - Normalize CSS
 - A simple CSS starting point used to achieve the final expected outcome of the assessment
 
-
-----
+---
 
 ### Assessment Expectations
 
