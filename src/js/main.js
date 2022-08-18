@@ -1,5 +1,5 @@
 const reportsLimit = reportData.length;
-const increaseBy = 3;
+const increaseBy = 6;
 const totalPages = Math.ceil(reportsLimit / increaseBy);
 
 let currentPage = 1;
