@@ -1,4 +1,5 @@
 * {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -10,15 +11,16 @@
   background-color: #2a3035;
   font-family: "Roboto", sans-serif;
   color: white;
+  min-height: 100vh;
 }
 #q4Wrapper h1,
-#q4Wrapper h3 {
+#q4Wrapper h2 {
   margin: 0;
 }
 #q4Wrapper h1 {
   font-size: 3rem;
 }
-#q4Wrapper h3 {
+#q4Wrapper h2 {
   font-size: 0.875rem;
   line-height: 1.42;
   text-transform: uppercase;
@@ -39,15 +41,22 @@
   text-align: center;
 }
 #q4Wrapper article img {
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
 }
 #q4Wrapper a {
   display: inline-block;
   text-decoration: none;
   color: white;
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  -o-transition: transform 0.3s ease;
   transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
 }
 #q4Wrapper a:hover {
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
   transform: scale(1.05);
 }
 #q4Wrapper a span {
@@ -66,7 +75,9 @@
 
 /* Begin styling the report items here! */
 .reports {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr;
   grid-template-columns: 1fr;
   gap: 1.875rem;
 }
@@ -77,17 +88,18 @@
 
 #see_more {
   display: block;
-  font-family: "Roboto", sans-serif;
-  cursor: pointer;
-
   margin: 2rem auto 1rem;
-  font-size: 1.2rem;
+  padding: 0.4em 1em;
   background-color: #22272b;
   color: white;
-  border: none;
-  padding: 0.4em 1em;
-  border-radius: 0.3125rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
   text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.3125rem;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
 
@@ -111,12 +123,14 @@
   }
 
   .reports {
+    -ms-grid-columns: (1fr) [2];
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media screen and (min-width: 769px) {
   .reports {
+    -ms-grid-columns: (1fr) [3];
     grid-template-columns: repeat(3, 1fr);
   }
 }
