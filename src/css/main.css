@@ -2,32 +2,38 @@
   box-sizing: border-box;
 }
 
+:root {
+  font-size: 15px;
+}
+
 #q4Wrapper {
-  background-color: #2A3035;
+  background-color: #2a3035;
   font-family: "Roboto", sans-serif;
   color: white;
 }
-#q4Wrapper h1, #q4Wrapper h3 {
+#q4Wrapper h1,
+#q4Wrapper h3 {
   margin: 0;
 }
 #q4Wrapper h1 {
-  font-size: 48px;
+  font-size: 3rem;
 }
 #q4Wrapper h3 {
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 0.875rem;
+  line-height: 1.42;
   text-transform: uppercase;
 }
-#q4Wrapper header, #q4Wrapper footer {
-  background-color: #22272B;
+#q4Wrapper header,
+#q4Wrapper footer {
+  background-color: #22272b;
 }
 #q4Wrapper header {
-  padding: 20px;
+  padding: 1.25rem;
 }
 #q4Wrapper footer {
-  margin-top: 10px;
-  padding: 10px;
-  border-radius: 5px;
+  margin-top: 0.625rem;
+  padding: 0.625rem;
+  border-radius: 0.3125rem;
 }
 #q4Wrapper article {
   text-align: center;
@@ -49,16 +55,40 @@
 }
 
 .layout_inner {
-  max-width: 960px;
+  max-width: 60rem;
   margin: 0 auto;
-  padding: 30px 20px;
+  padding: 1.875rem 1.25rem;
 }
 .layout_header {
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
   text-align: center;
 }
 
 /* Begin styling the report items here! */
 .reports {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.875rem;
+}
 
+.reports_cover {
+  max-width: 100%;
+}
+
+/* Media Queries */
+
+@media screen and (min-width: 481px) {
+  :root {
+    font-size: 16px;
+  }
+
+  .reports {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .reports {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
