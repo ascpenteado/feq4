@@ -2,6 +2,44 @@ const reportData = [
   {
     cover: "images/cover1.jpg",
     type: "Annual Report",
+    title: "2021 Annual Report",
+    documents: [
+      {
+        file_size: "16 KB",
+        file_type: "PDF",
+        url: "files/test.pdf",
+        title: "2021 Annual Report",
+      },
+      {
+        file_size: "7 KB",
+        file_type: "PDF",
+        url: "files/test.pdf",
+        title: "2021 Proxy Statement",
+      },
+    ],
+  },
+  {
+    cover: "images/cover1.jpg",
+    type: "Annual Report",
+    title: "2020 Annual Report",
+    documents: [
+      {
+        file_size: "16 KB",
+        file_type: "PDF",
+        url: "files/test.pdf",
+        title: "2020 Annual Report",
+      },
+      {
+        file_size: "7 KB",
+        file_type: "PDF",
+        url: "files/test.pdf",
+        title: "2020 Proxy Statement",
+      },
+    ],
+  },
+  {
+    cover: "images/cover1.jpg",
+    type: "Annual Report",
     title: "2019 Annual Report",
     documents: [
       {

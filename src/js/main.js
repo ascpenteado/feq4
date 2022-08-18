@@ -1,35 +1,58 @@
-const template = `
-{{#.}}
-    <article class="reports_item">
-        <a href="{{cover}}" target="_blank">
-            <img class="reports_cover" src="{{cover}}" alt="{{title}} Cover"/>
-        </a>
-        <footer class="reports_docs">
-            {{#documents}}
-                <h3 class="reports_title">
-                    <a href="{{url}}" target="_blank">{{title}} <span>({{file_size}} {{file_type}})</span></a>
-                </h3>
-            {{/documents}}
-        </footer>
-    </article>
-{{/.}}
-`;
+const reportsLimit = reportData.length;
+const increaseBy = 3;
+const totalPages = Math.ceil(reportsLimit / increaseBy);
+
+let currentPage = 1;
+let reportsToRender = reportData.slice(0, increaseBy);
+
+const btn = $("#see_more");
+btn.click(function () {
+  handleSeeMoreBtnClick();
+});
+
+const cardsTemplatePath = "../templates/report-card.mustache";
+
+const getTemplate = async (path) => {
+  if (!path) return;
+
+  const response = await fetch(path);
+  if (!response.ok) {
+    throw new Error(
+      `Could not retrieve the template file! Status: ${response.status}`
+    );
+  }
+
+  const data = await response.text();
+  return data;
+};
 
 const reportsWidget = {
-  options: {
-    containerSelector: ".reports",
-    template,
-  },
-
+  containerSelector: ".reports",
   renderReports: function (reports) {
-    const { containerSelector, template } = this.options;
-
-    $(containerSelector).html(Mustache.render(template, reports));
+    getTemplate(cardsTemplatePath).then((template) =>
+      $(this.containerSelector).html(Mustache.render(template, reportsToRender))
+    );
   },
-
-  init: function () {
-    this.renderReports(reportData || []);
+  init: function (data) {
+    this.renderReports(data || []);
   },
 };
 
-reportsWidget.init();
+reportsWidget.init(reportsToRender);
+
+const handleSeeMoreBtnClick = async () => {
+  const currentIndex = currentPage * increaseBy;
+  currentPage++;
+  reportsToRender = reportData.slice(currentIndex, increaseBy * currentPage);
+  const template = await getTemplate(cardsTemplatePath);
+
+  reportsToRender.forEach((report) => {
+    $(reportsWidget.containerSelector).append(
+      Mustache.render(template, report)
+    );
+  });
+
+  if (currentPage >= totalPages) {
+    btn.prop("disabled", true);
+  }
+};
