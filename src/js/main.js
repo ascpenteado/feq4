@@ -1,16 +1,34 @@
+const cardsTemplatePath = "../templates/report-card.mustache";
+
+// See more btn configs
 const reportsLimit = reportData.length;
 const increaseBy = 6;
 const totalPages = Math.ceil(reportsLimit / increaseBy);
-
 let currentPage = 1;
 let reportsToRender = reportData.slice(0, increaseBy);
 
+// Btn handler
 const btn = $("#see_more");
 btn.click(function () {
   handleSeeMoreBtnClick();
 });
 
-const cardsTemplatePath = "../templates/report-card.mustache";
+const handleSeeMoreBtnClick = async () => {
+  const currentIndex = currentPage * increaseBy;
+  currentPage++;
+  reportsToRender = reportData.slice(currentIndex, increaseBy * currentPage);
+  const template = await getTemplate(cardsTemplatePath);
+
+  reportsToRender.forEach((report) => {
+    $(reportsWidget.containerSelector).append(
+      Mustache.render(template, report)
+    );
+  });
+
+  if (currentPage >= totalPages) {
+    btn.prop("disabled", true);
+  }
+};
 
 const getTemplate = async (path) => {
   if (!path) return;
@@ -39,20 +57,3 @@ const reportsWidget = {
 };
 
 reportsWidget.init(reportsToRender);
-
-const handleSeeMoreBtnClick = async () => {
-  const currentIndex = currentPage * increaseBy;
-  currentPage++;
-  reportsToRender = reportData.slice(currentIndex, increaseBy * currentPage);
-  const template = await getTemplate(cardsTemplatePath);
-
-  reportsToRender.forEach((report) => {
-    $(reportsWidget.containerSelector).append(
-      Mustache.render(template, report)
-    );
-  });
-
-  if (currentPage >= totalPages) {
-    btn.prop("disabled", true);
-  }
-};
